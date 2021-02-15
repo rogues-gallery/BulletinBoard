@@ -6,6 +6,7 @@
 import UIKit
 import BLTNBoard
 import SafariServices
+import CustomBulletins
 
 /**
  * A set of tools to interact with the demo data.
@@ -202,7 +203,11 @@ enum BulletinDataSource {
 
     static func makeChoicePage() -> PetSelectorBulletinPage {
 
-        let page = PetSelectorBulletinPage(title: "Choose your Favorite")
+        let page = PetSelectorBulletinPage(completionHandler: { currentItem in
+            let completionPage = BulletinDataSource.makeCompletionPage()
+            currentItem.manager?.push(item: completionPage)
+        })
+        
         page.isDismissable = false
         page.descriptionText = "Your favorite pets will appear when you open the app."
         page.actionButtonTitle = "Select"
@@ -225,8 +230,16 @@ enum BulletinDataSource {
         let page = BLTNPageItem(title: "Setup Completed")
         page.image = #imageLiteral(resourceName: "IntroCompletion")
         page.imageAccessibilityLabel = "Checkmark"
-        page.appearance.actionButtonColor = #colorLiteral(red: 0.2980392157, green: 0.8509803922, blue: 0.3921568627, alpha: 1)
-        page.appearance.imageViewTintColor = #colorLiteral(red: 0.2980392157, green: 0.8509803922, blue: 0.3921568627, alpha: 1)
+
+        let tintColor: UIColor
+        if #available(iOS 13.0, *) {
+            tintColor = .systemGreen
+        } else {
+            tintColor = #colorLiteral(red: 0.2980392157, green: 0.8509803922, blue: 0.3921568627, alpha: 1)
+        }
+        page.appearance.actionButtonColor = tintColor
+        page.appearance.imageViewTintColor = tintColor
+
         page.appearance.actionButtonTitleColor = .white
 
         page.descriptionText = "PetBoard is ready for you to use. Happy browsing!"

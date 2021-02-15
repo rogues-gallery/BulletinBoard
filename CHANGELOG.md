@@ -1,4 +1,36 @@
 # _BulletinBoard_ Changelog
+## Unreleased
+### Changes
+- Require iOS 11.0
+- Support for Swift Package Manager
+
+### Fixes
+- Fix the background view origin when presenting
+[#183](https://github.com/alexaubry/BulletinBoard/pull/183)
+
+## 🔖 v4.1.2
+### Fixes
+- Fix crash for iOS 11 and under
+[#177](https://github.com/alexaubry/BulletinBoard/issues/177)
+
+## 🔖 v4.1.1
+### Changes
+- Do not use external resources for close button
+
+### Fixes
+- Fix for iPad split view bug
+[#173](https://github.com/alexaubry/BulletinBoard/pull/173)
+
+## 🔖 v4.1.0
+### New Features
+- iOS 13 Dark Mode support
+[#170](https://github.com/alexaubry/BulletinBoard/issues/170)
+- Add mechanism to pop to item
+[#165](https://github.com/alexaubry/BulletinBoard/pull/165)
+
+### Fixes
+- Remove testing dependencies from the Cartfile 
+[#166](https://github.com/alexaubry/BulletinBoard/pull/166)
 
 ## 🔖 v4.0.0
 ### Fixes
